@@ -3,6 +3,7 @@ fn main() {
     println!("running program!");
     customizing_builds_with_release_profiles();
     publishing_a_crate_to_crates_io();
+    cargo_workspaces();
 }
 
 fn customizing_builds_with_release_profiles() {
@@ -44,4 +45,28 @@ fn publishing_a_crate_to_crates_io() {
     // can not be removed after published, but they can be deprecated (specific versions can be
     // deprecated as well). The command to deprecate a crate is `cargo yank --vers 1.0`.
 
+}
+
+fn cargo_workspaces() {
+    //A workspace is a set of packages that share the same Cargo.lock and output directory.
+
+    //Made a workspace named `add` inside this project. The workspaces can have multiple libraries
+    // within the same project. These workspaces share a Cargo.lock file, this allows them to all
+    // use the same dependencies when necessary. For example, say an older version of rand is used
+    // in one library. If the binary wants to use it too, I will need to include the crate in the
+    // binaries Cargo.toml file, but it will not need to be downloaded again.
+
+    //Each crate will need to be published separately to crates.io if publishing them.
+}
+
+fn installing_binaries_from_crates_io() {
+    //The cargo install command allows to install and use binary crates locally. For example the
+    // ripgrep command can be installed by using `cargo install ripgrep`. This will allow use from
+    // the terminal of this command. On my system it puts them on `/home/jeremiah/.cargo/bin/rg`.
+}
+
+fn extending_cargo_with_custom_commands() {
+    //The `cargo` terminal command can be extended. This can be done by adding a Rust binary to the
+    // $PATH variable named cargo-something. This can then be run by using `cargo something`. This
+    // allows for installing binaries with cargo install, then using them as built in Cargo tools.
 }
